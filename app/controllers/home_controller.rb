@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @now = Time.current.utc
+    @date = Date.today
   end
 end

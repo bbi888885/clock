@@ -1,12 +1,19 @@
+<!-- Date -->
+<h1><%= @date.to_formatted_s(:long)%></h1>
 
+<!-- Digitial Clock -->
+<div id="clock" class="light">
+			<div class="display">
+				<div class="weekdays"></div>
+				<div class="ampm"></div>
+				<div class="alarm"></div>
+				<div class="digits"></div>
+			</div>
+		</div>
 
-<h1 class="text-center"><%= @now.strftime("%d of %B, %Y") %></h1>
-<h1 class="text-center"><%= @now.strftime("%I:%M %p")  %></h1>
+		<div class="button-holder">
+		</div>
 
-<button type="button" class="btn btn-success">Start</button>
-<button type="button" class="btn btn-danger">Finish</button>
-
-<a class="btn btn-custom01">
-  <span class="btn-custom01-front">PUSH</span>
-  <i class="fas fa-angle-right fa-position-right"></i>
-</a>
+<!-- JavaScript Includes -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js"></script>
