@@ -1,31 +1,25 @@
 
-<!-- Clock-in/out -->
-<%= form_with url: themes_path, method: :post do |f| %>
-  <%= f.text_field :subject %>
-  <%= f.submit "send",class:"btn btn-primary" %>
-<% end %>
-
-<!-- タスク一覧表示 -->
-<% @themes.each do |theme| %>
-  <p>タイトル<%= theme.subject %></p>
-  <!-- 時間を確認したい場合は記載してください。-->
-  <% if theme.start_time != nil %>
-    <p>開始時刻<%= theme.start_time.created_at %></p>
-  <% end %>
-  <% if theme.stop_time != nil %>
-    <p>終了時刻<%= theme.stop_time.created_at %></p>
-  <% end %>
-
-  <% if theme.start_time == nil %>
-    <%= form_with url: theme_start_times_path(theme_id: theme.id), method: :post do |f| %>
-      <%= f.submit "開始" %>
-    <% end %>
-  <% end %>
-
-  <% if theme.start_time != nil && theme.stop_time == nil  %>
-    <%= form_with url: theme_stop_times_path(theme_id: theme.id), method: :post do |f| %>
-    <%= f.submit "終了"%>
-    <% end %>
-  <% end %>
-
-<% end %>
+<table class="table table-striped">
+  <thead >
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Subject</th>
+      <th scope="col">Start Time</th>
+      <th scope="col">Stop Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @themes.subject %></td>
+    </tr>
+    <tr>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>

@@ -4,14 +4,15 @@ class ThemesController < ApplicationController
     @themes = Theme.all
   end
 
-  def create
-    theme = Theme.create(theme_params)
-    render :new
-  end
-
   def new
     @themes = Theme.all
   end
+
+  def create
+    theme = Theme.create(theme_params)
+    redirect_to :index
+  end
+
 
 
   private
