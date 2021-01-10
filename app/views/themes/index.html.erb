@@ -1,0 +1,50 @@
+<!-- Date -->
+<h1><%= @date.to_formatted_s(:long)%></h1>
+
+<!-- Digitial Clock -->
+<div id="clock" class="light">
+			<div class="display">
+				<div class="weekdays"></div>
+				<div class="ampm"></div>
+				<div class="alarm"></div>
+				<div class="digits"></div>
+			</div>
+		</div>
+
+		<div class="button-holder">
+		</div>
+
+<!-- JavaScript Includes -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js"></script>
+
+<!-- Clock-in/out -->
+<%= form_with url: themes_path, method: :post do |f| %>
+  <%= f.text_field :subject %>
+  <%= f.submit "send", class:"btn btn-primary" %>
+<% end %>
+
+<!-- タスク一覧表示 -->
+<% @themes.each do |theme| %>
+  <p>タイトル<%= theme.subject %></p>
+  <!-- 時間を確認したい場合は記載してください。-->
+  <% if theme.start_time != nil %>
+    <p>開始時刻<%= theme.start_time.created_at %></p>
+  <% end %>
+  <% if theme.stop_time != nil %>
+    <p>終了時刻<%= theme.stop_time.created_at %></p>
+  <% end %>
+
+  <% if theme.start_time == nil %>
+    <%= form_with url: theme_start_times_path(theme_id: theme.id), method: :post do |f| %>
+      <%= f.submit "開始", class:"btn btn-success" %>
+    <% end %>
+  <% end %>
+
+  <% if theme.start_time != nil && theme.stop_time == nil  %>
+    <%= form_with url: theme_stop_times_path(theme_id: theme.id), method: :post do |f| %>
+    <%= f.submit "終了", class:"btn btn-danger"%>
+    <% end %>
+  <% end %>
+
+<% end %>
