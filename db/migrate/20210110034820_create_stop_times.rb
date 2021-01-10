@@ -1,7 +1,7 @@
 class CreateStopTimes < ActiveRecord::Migration[6.0]
   def change
     create_table :stop_times do |t|
-      t.reference     :theme, foreign_key: true
+      t.references     :theme, foreign_key: true
       t.timestamps
     end
   end
