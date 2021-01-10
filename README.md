@@ -48,7 +48,7 @@ Things you may want to cover:
 - has_many   :starttime
 - has_many   :endtime
 
-## starttimes テーブル
+## start_times テーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
@@ -59,7 +59,7 @@ Things you may want to cover:
 - belongs_to :user
 - belongs_to :theme
 
-## endtimes テーブル
+## end_times テーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
